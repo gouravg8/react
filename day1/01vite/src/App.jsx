@@ -1,6 +1,7 @@
 // import { useState } from "react";
 import "./App.css";
-import BgChanger from "./components/BgChanger";
+// import BgChanger from "./components/BgChanger";
+import PassGen from "./components/PassGen.tsx";
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -16,7 +17,10 @@ function App() {
   // const subtract = () => count > 0 && setCount(count - 1);
 
   return (
-    <>
+    <div
+      style={{ height: "100vh" }}
+      className="flex flex-col item-center align-middle justify-center"
+    >
       {/* <div>
         <img
           src="https://i.ytimg.com/vi/lI7IIOWM0Mo/maxresdefault.jpg"
@@ -36,8 +40,9 @@ function App() {
         </button>
       </div> */}
 
-      <BgChanger />
-    </>
+      {/* <BgChanger /> */}
+      <PassGen />
+    </div>
   );
 }
 
