@@ -1,7 +1,8 @@
 // import { useState } from "react";
 import "./App.css";
+import CurrencyConvo from "./components/CurrencyConvo/CurrencyConvo.jsx";
 // import BgChanger from "./components/BgChanger";
-import PassGen from "./components/PassGen.tsx";
+// import PassGen from "./components/PassGen.tsx";
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -41,7 +42,8 @@ function App() {
       </div> */}
 
       {/* <BgChanger /> */}
-      <PassGen />
+      {/* <PassGen /> */}
+      <CurrencyConvo/>
     </div>
   );
 }
