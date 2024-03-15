@@ -24,11 +24,11 @@ npm run dev         # run development server for react
 
 ### SPA
 
-Web apps that are created using react are known as SPA meaning single page applications, beacause it only contains one and only single index.html file
+Web apps that are created using react are known as SPA meaning single page applications, because it only contains one and only single index.html file
 
 And rest DOM is created using React in Jsx format
 
-### Strucure
+### Structure
 
 ```text
 ├── node_modules
@@ -47,7 +47,7 @@ And rest DOM is created using React in Jsx format
 
 ### Fragment
 
-- it is an empty tag to wrap up the multiple elements insede it
+- it is an empty tag to wrap up the multiple elements inside it
 - empty tag/fragment does not create a new node on the DOM
 
 ### Components
@@ -63,6 +63,28 @@ And rest DOM is created using React in Jsx format
     App.jsx
     ```
 
-  - it is preffered that the component containing jsx code must be initialized named with **.jsx** extension
+  - it is preferred that the component containing jsx code must be initialized named with **.jsx** extension
   - **function name**, **file name** must start with CapitalLetter
-  
+
+## Day3
+
+- **Transpiler/Bundler** convert the JSX code into **.js** readable format and to create the DOM from it
+- We can also write component as a function
+
+```text
+<App /> also App()
+```
+
+- **JSX**: JavaScript eXtension
+
+  - We can write **JS** inside the HTML
+  - It is **evaluated expression(final output)**
+  - We can't use `if-else` in JSX directly
+  - We can show JS variables in jsx using {curly braces}
+
+  ```javascript
+  function App() {
+    let name = "Gourav soni";
+    return <h1>My name is {name}</h1>;
+  }
+  ```
