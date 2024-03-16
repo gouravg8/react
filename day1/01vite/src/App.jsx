@@ -1,6 +1,6 @@
 // import { useState } from "react";
 import "./App.css";
-import CurrencyConvo from "./components/CurrencyConvo/CurrencyConvo.jsx";
+import CurrencyConvo from "./components/CurrencyConvo/CurrencyConvo";
 // import BgChanger from "./components/BgChanger";
 // import PassGen from "./components/PassGen.tsx";
 
@@ -43,7 +43,7 @@ function App() {
 
       {/* <BgChanger /> */}
       {/* <PassGen /> */}
-      <CurrencyConvo/>
+      <CurrencyConvo />
     </div>
   );
 }
