@@ -72,10 +72,10 @@ function InputField() {
 
   //   const handleInpChange = (e) => setInputField(e.target.value);
   return (
-    <div className="flex flex-col w-full justify-center item-center align-middle">
+    <div className="flex flex-col w-full justify-center item-center align-middle ">
       <div className="flex gap-4">
         <input
-          className="border border-black rounded px-2 text-black w-full"
+          className="border  outline-none  rounded px-2 text-black w-full"
           type="text"
           name="input"
           id="input"
@@ -135,8 +135,10 @@ function InputField() {
 
 function PassGen() {
   return (
-    <div className="flex justify-center align-middle bg-blue-900 w-2/3 md:w-2/3 lg:w-3/4 mx-auto rounded px-8 py-2 text-white">
-      <InputField />
+    <div className="w-full flex justify-center bg-gray-900">
+      <div className=" border align-middle shadow-xl w-2/3 md:w-2/3 lg:w-3/4 mx-auto my-32 rounded px-8 py-6 bg-white/80">
+        <InputField />
+      </div>
     </div>
   );
 }
