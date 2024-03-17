@@ -88,3 +88,23 @@ And rest DOM is created using React in Jsx format
     return <h1>My name is {name}</h1>;
   }
   ```
+
+## Day4
+
+### Hook
+
+Hooks are the special type of JS function of React, that let us use many features of React directly from the `<Component>`
+
+### useState()
+
+`useState()` hook helps us to change the state(current value) of the variable, wherever it(variable) is used throughout the `<Component>`
+
+#### syntax
+
+```javascript
+let [var, setVar] = useState(initialValue)
+```
+
+var: variable
+setVar: method to change the value of that variable
+initialValue: default/starting value of the variable
