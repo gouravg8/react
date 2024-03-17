@@ -75,12 +75,12 @@ And rest DOM is created using React in Jsx format
 <App /> also App()
 ```
 
-- **JSX**: JavaScript eXtension
+### JSX (JavaScript eXtension)
 
-  - We can write **JS** inside the HTML
-  - It is **evaluated expression(final output)**
-  - We can't use `if-else` in JSX directly
-  - We can show JS variables in jsx using {curly braces}
+- We can write **JS** inside the HTML
+- It is **evaluated expression(final output)**
+- We can't use `if-else` in JSX directly
+- We can show JS variables in jsx using {curly braces}
 
   ```javascript
   function App() {
