@@ -108,3 +108,29 @@ let [var, setVar] = useState(initialValue)
 var: variable
 setVar: method to change the value of that variable
 initialValue: default/starting value of the variable
+
+## Day5
+
+### Virtual DOM
+
+- React creates the tree like structure for keeping the track for changes in the UI
+- It is done by the comparing both Real DOM and React's own DOM and if differences found it(React) changes and reflects on the DOM
+
+### Fibre
+
+- Keeping the **Track** and **updation** is done by **Fibre Algorithm**
+- Key features: Pause, Abort, or reuse work as new update come in
+
+```text
+_Hydration:_ Inserting Js in HTML & CSS to make it interative and functional
+```
+
+### Reconciliation
+
+- React algorithm Chooses what to update, When to update in the UI
+- By **difference algorithm** between two **Real DOM** and **Virtual Dom**
+
+### Why to use **Keys** in list
+
+- React algorithm Chooses what to update, When to update in the UI
+- By **difference algorithm** between two **Real DOM** and **Virtual Dom**
