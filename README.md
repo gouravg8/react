@@ -185,4 +185,49 @@ function Card({ name, age }) {
 }
 ```
 
-Note: End of React foundation
+`Note: End of React foundation`
+
+## day7
+
+### React interview question
+
+Q. what will be output and how to make it working
+
+```javascript
+const [counter, setCounter] = useState(0);
+const add = () => {
+  setCounter(counter + 1);
+  setCounter(counter + 1);
+  setCounter(counter + 1);
+  setCounter(counter + 1);
+};
+```
+
+Answer. Fibre(algo behind react) will batch the same task with no change, and then send it once to reflect the changes
+
+we can make it working to add +4 at one click
+
+way: 1
+
+```javascript
+const [counter, setCounter] = useState(0);
+const add = () => {
+  setCounter(counter + 4);
+};
+```
+
+Directly increment the counter by +4
+
+way: 2
+
+```javascript
+const [counter, setCounter] = useState(0);
+const add = () => {
+  setCounter((prev) => prev + 1);
+  setCounter((prev) => prev + 1);
+  setCounter((prev) => prev + 1);
+  setCounter((prev) => prev + 1);
+};
+```
+
+In 2nd the change will happen based on it's previous value of the variable in the callback function
