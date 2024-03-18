@@ -15,7 +15,7 @@ function ColorTab({ setBgColor }) {
     "black",
   ];
   return (
-    <div className="absolute w-3/4 flex gap-5 left-1/2 -translate-x-1/2 justify-center align-middle bottom-8 bg-blue-100 px-12 py-2 mx-auto rounded-full">
+    <div className="absolute w-5/6 md:w-3/4 flex flex-wrap gap-2 md:gap-5 left-1/2 -translate-x-1/2 justify-center align-middle bottom-8 bg-blue-100 px-2 md:px-12 py-2 mx-auto rounded-lg md:rounded-full">
       {colors.map((color, idx) => (
         <button
           className="px-3 py-1 rounded-full font-semibold"

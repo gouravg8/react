@@ -1,10 +1,10 @@
-import InputBox from "./InputBox.tsx";
+import InputBox from "./InputBox.jsx";
 import useCurrencyInfo from "../../hooks/useCurrencyInfo";
 import { useState } from "react";
 
 function CurrencyConvo() {
-  const backgroundImage =
-    "https://images.pexels.com/photos/6770610/pexels-photo-6770610.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+  // const backgroundImage =
+  //   "https://images.pexels.com/photos/6770610/pexels-photo-6770610.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
 
   const [amount, setAmount] = useState(0);
   const [amountCurrency, setAmountCurrency] = useState("usd");
@@ -27,13 +27,13 @@ function CurrencyConvo() {
 
   return (
     <div
-      className="w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat"
-      style={{
-        backgroundImage: `url('${backgroundImage}')`,
-      }}
+      className="w-full flex flex-wrap justify-center items-center bg-cover bg-no-repeat bg-gray-900"
+      // style={{
+      //   backgroundImage: `url('${backgroundImage}')`,
+      // }}
     >
-      <div className="w-full">
-        <div className="w-full max-w-md mx-auto border border-gray-60 rounded-lg p-5 backdrop-blur-sm bg-white/30">
+      <div className="w-full my-20">
+        <div className="w-3/4 md:w-full max-w-md mx-auto border border-gray-60 rounded-lg p-5 backdrop-blur-sm bg-white/30 shadow-2xl">
           <form
             onSubmit={(e) => {
               e.preventDefault();

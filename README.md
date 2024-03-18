@@ -75,12 +75,12 @@ And rest DOM is created using React in Jsx format
 <App /> also App()
 ```
 
-- **JSX**: JavaScript eXtension
+### JSX (JavaScript eXtension)
 
-  - We can write **JS** inside the HTML
-  - It is **evaluated expression(final output)**
-  - We can't use `if-else` in JSX directly
-  - We can show JS variables in jsx using {curly braces}
+- We can write **JS** inside the HTML
+- It is **evaluated expression(final output)**
+- We can't use `if-else` in JSX directly
+- We can show JS variables in jsx using {curly braces}
 
   ```javascript
   function App() {
@@ -88,3 +88,146 @@ And rest DOM is created using React in Jsx format
     return <h1>My name is {name}</h1>;
   }
   ```
+
+## Day4
+
+### Hook
+
+Hooks are the special type of JS function of React, that let us use many features of React directly from the `<Component>`
+
+### useState()
+
+`useState()` hook helps us to change the state(current value) of the variable, wherever it(variable) is used throughout the `<Component>`
+
+#### syntax
+
+```javascript
+let [var, setVar] = useState(initialValue)
+```
+
+var: variable
+setVar: method to change the value of that variable
+initialValue: default/starting value of the variable
+
+## Day5
+
+### Virtual DOM
+
+- React creates the tree like structure for keeping the track for changes in the UI
+- It is done by the comparing both Real DOM and React's own DOM and if differences found it(React) changes and reflects on the DOM
+
+### Fibre
+
+- Keeping the **Track** and **updation** is done by **Fibre Algorithm**
+- Key features: Pause, Abort, or reuse work as new update come in
+
+```text
+_Hydration:_ Inserting Js in HTML & CSS to make it interative and functional
+```
+
+### Reconciliation
+
+- React algorithm Chooses what to update, When to update in the UI
+- By **difference algorithm** between two **Real DOM** and **Virtual Dom**
+
+### Why to use **Keys** in list
+
+- **Increase Performance** by differentiating each list item to another by key
+- Key should be **Stable**, **Predictable**, & **Unique**
+
+## Day6
+
+### React
+
+```text
+Don't segregate the code according to technology but segregate them according what the do (piece of code)
+```
+
+| Don't                                   | Do's                                 |
+| --------------------------------------- | ------------------------------------ |
+| Card                                    | Card                                 |
+| `[index.html], [style.css],[script.js]` | `[index.html, style.css, script.js]` |
+
+### Props
+
+Properties send by parent components to children components in the form of objects with key/value pairs
+
+`APP.jsx`
+
+```javascript
+<Card name='Gourav soni' age={21}>
+```
+
+`Card.jsx`  
+way: 1
+
+```javascript
+function Card(props) {
+  return (
+    <>
+      <h1>Hello {props.name}</h1>
+      <p>Your age is {props.age}</p>
+    </>
+  );
+}
+```
+
+way: 2
+
+```javascript
+function Card({ name, age }) {
+  return (
+    <>
+      <h1>Hello {name}</h1>
+      <p>Your age is {age}</p>
+    </>
+  );
+}
+```
+
+`Note: End of React foundation`
+
+## day7
+
+### React interview question
+
+Q. what will be output and how to make it working
+
+```javascript
+const [counter, setCounter] = useState(0);
+const add = () => {
+  setCounter(counter + 1);
+  setCounter(counter + 1);
+  setCounter(counter + 1);
+  setCounter(counter + 1);
+};
+```
+
+Answer. Fibre(algo behind react) will batch the same task with no change, and then send it once to reflect the changes
+
+we can make it working to add +4 at one click
+
+way: 1
+
+```javascript
+const [counter, setCounter] = useState(0);
+const add = () => {
+  setCounter(counter + 4);
+};
+```
+
+Directly increment the counter by +4
+
+way: 2
+
+```javascript
+const [counter, setCounter] = useState(0);
+const add = () => {
+  setCounter((prev) => prev + 1);
+  setCounter((prev) => prev + 1);
+  setCounter((prev) => prev + 1);
+  setCounter((prev) => prev + 1);
+};
+```
+
+In 2nd the change will happen based on it's previous value of the variable in the callback function

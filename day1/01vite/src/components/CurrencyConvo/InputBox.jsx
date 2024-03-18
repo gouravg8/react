@@ -7,19 +7,17 @@ function InputBox({
   onCurrencyChanged,
   selectCurrency = "usd",
   className = "",
-  minValue,
 }) {
   return (
-    <div className={`bg-white p-3 rounded-lg text-sm flex ${className}`}>
+    <div className={`bg-gray-50 p-3 rounded-lg text-sm flex ${className}`}>
       <div className="w-1/2">
         <label className="text-black/40 mb-2 inline-block">{label}</label>
         <input
           value={amount}
           onChange={(e) => onAmountChanged && onAmountChanged(e.target.value)}
-          className="outline-none w-full bg-transparent py-1.5"
+          className="outline-none w-full  px-4 rounded py-1.5"
           type="number"
           placeholder="Amount"
-          min={minValue}
         />
       </div>
       <div className="w-1/2 flex flex-wrap justify-end text-right">
