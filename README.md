@@ -134,3 +134,55 @@ _Hydration:_ Inserting Js in HTML & CSS to make it interative and functional
 
 - **Increase Performance** by differentiating each list item to another by key
 - Key should be **Stable**, **Predictable**, & **Unique**
+
+## Day6
+
+### React
+
+```text
+Don't segregate the code according to technology but segregate them according what the do (piece of code)
+```
+
+| Don't                                   | Do's                                 |
+| --------------------------------------- | ------------------------------------ |
+| Card                                    | Card                                 |
+| `[index.html], [style.css],[script.js]` | `[index.html, style.css, script.js]` |
+
+### Props
+
+Properties send by parent components to children components in the form of objects with key/value pairs
+
+`APP.jsx`
+
+```javascript
+<Card name='Gourav soni' age={21}>
+```
+
+`Card.jsx`  
+way: 1
+
+```javascript
+function Card(props) {
+  return (
+    <>
+      <h1>Hello {props.name}</h1>
+      <p>Your age is {props.age}</p>
+    </>
+  );
+}
+```
+
+way: 2
+
+```javascript
+function Card({ name, age }) {
+  return (
+    <>
+      <h1>Hello {name}</h1>
+      <p>Your age is {age}</p>
+    </>
+  );
+}
+```
+
+Note: End of React foundation
