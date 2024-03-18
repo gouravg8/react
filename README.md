@@ -132,5 +132,5 @@ _Hydration:_ Inserting Js in HTML & CSS to make it interative and functional
 
 ### Why to use **Keys** in list
 
-- React algorithm Chooses what to update, When to update in the UI
-- By **difference algorithm** between two **Real DOM** and **Virtual Dom**
+- **Increase Performance** by differentiating each list item to another by key
+- Key should be **Stable**, **Predictable**, & **Unique**
