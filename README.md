@@ -105,8 +105,8 @@ Hooks are the special type of JS function of React, that let us use many feature
 let [var, setVar] = useState(initialValue)
 ```
 
-var: variable
-setVar: method to change the value of that variable
+var: variable  
+setVar: method to change the value of that variable  
 initialValue: default/starting value of the variable
 
 ## Day5
