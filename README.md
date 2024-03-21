@@ -231,3 +231,44 @@ const add = () => {
 ```
 
 In 2nd the change will happen based on it's previous value of the variable in the callback function
+
+## day8
+
+### Project BgChanger
+
+This project is to test our knowledge of the useState() hook, list(key), event handlers, components etc.
+
+Functionality:
+
+- there are many buttons on UI which will be length of `colors` array, it can be increase or decrease accordingly depending on the value of `colors` array
+- when we click on the button named colors name and then it will change the color of the main div
+
+![bgChanger project](image-4.png)
+
+`BgChanger.jsx`
+
+```javascript
+function ColorTab({ setBgColor }) {
+  const handleClick = (e) => setBgColor(e.target.innerText);
+  const colors = ["red", "green", "blue", "yellow", "olive"];
+
+  return (
+    <div>
+      {colors.map((color, idx) => (
+        <button key={idx} onClick={handleClick}>
+          {color}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function BgColor() {
+  const [bgColor, setBgColor] = useState("olive");
+  return (
+    <div style={{ backgroundColor: bgColor }}>
+      <ColorTab setBgColor={setBgColor} />
+    </div>
+  );
+}
+```
