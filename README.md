@@ -272,3 +272,63 @@ function BgColor() {
   );
 }
 ```
+
+## day9
+
+### useEffect, useRef, and useCallback
+
+**Project**: a password generator which have options to increase length, add numbers, add special characters, and copy the generated password
+
+![password generator](image-2.png)
+
+1. useEffect: useEffect is a built-in hook in React that lets you synchronize your component with the rest of the app, by performing side effects such as data fetching, manipulating the DOM.
+
+syntax:
+
+```javascript
+import { useEffect } from 'react';
+
+function AnyComponentName() {
+  useEffect(() => {
+    // Code to run in response to state changes
+  }, [dependencies]);
+
+  return (
+    // JSX code
+  );
+}
+```
+
+2. useRef: useRef allows you to create a mutable reference to something. It is used to access or manipulate a DOM element, this passes the reference of the element
+
+syntax:
+
+```javascript
+import { useRef } from "react";
+
+function AnyComponentName() {
+  const myRef = useRef(initialValue);
+
+  // JSX code
+  return <div ref={myRef}>{/* JSX code */}</div>;
+}
+```
+
+3. useCallback: useCallback is used to optimize the function
+
+- optimize performance by preventing unnecessary re-renders of child components.
+- takes place with dependencies
+
+syntax:
+
+```javascript
+import { useCallback } from "react";
+
+function AnyComponentName() {
+  const handleClick = useCallback(() => {
+    // Code to run when the button is clicked
+  }, [dependencies]);
+
+  return <button onClick={handleClick}>Click me</button>;
+}
+```
