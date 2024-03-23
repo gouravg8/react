@@ -231,3 +231,46 @@ const add = () => {
 ```
 
 In 2nd the change will happen based on it's previous value of the variable in the callback function
+
+## day8
+
+### BgProject
+
+**Problem statement**: create a webpage where there is a div containing the multiple colors name and when we click on any color button then the whole webpage is become the same color of the button
+
+example: ![bgcolor project](image.png)
+
+`BgChanger.jsx`
+
+```javascript
+function BgChanger() {
+  const [bgcolor, setBgcolor] = useState("olive");
+  return (
+    <div style={{ backgroundColor: bgcolor, width: "500px", height: "500px" }}>
+      <ColorTab setBgColor={setBgcolor} />
+    </div>
+  );
+}
+```
+
+`ColorTab.jsx`
+
+```javascript
+function ColorTab({ setBgcolor }) {
+  const handleClick = (e) => setBgcolor(e.target.value);
+  const colors = ["red", "blue", "pink", "olive"];
+  return (
+    <div>
+      {colors.map((color, idx) => (
+        <button
+          style={{ backgroundColor: color }}
+          key={idx}
+          onClick={handleClick}
+        >
+          {color}
+        </button>
+      ))}
+    </div>
+  );
+}
+```
