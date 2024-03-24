@@ -234,6 +234,7 @@ In 2nd the change will happen based on it's previous value of the variable in th
 
 ## day8
 
+
 ### Project BgChanger
 
 This project is to test our knowledge of the useState() hook, list(key), event handlers, components etc.
@@ -248,6 +249,7 @@ Functionality:
 `BgChanger.jsx`
 
 ```javascript
+
 function ColorTab({ setBgColor }) {
   const handleClick = (e) => setBgColor(e.target.innerText);
   const colors = ["red", "green", "blue", "yellow", "olive"];
@@ -272,6 +274,7 @@ function BgColor() {
   );
 }
 ```
+
 
 ## day9
 
