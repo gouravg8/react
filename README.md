@@ -234,43 +234,104 @@ In 2nd the change will happen based on it's previous value of the variable in th
 
 ## day8
 
-### BgProject
 
-**Problem statement**: create a webpage where there is a div containing the multiple colors name and when we click on any color button then the whole webpage is become the same color of the button
+### Project BgChanger
 
-example: ![bgcolor project](image.png)
+This project is to test our knowledge of the useState() hook, list(key), event handlers, components etc.
+
+Functionality:
+
+- there are many buttons on UI which will be length of `colors` array, it can be increase or decrease accordingly depending on the value of `colors` array
+- when we click on the button named colors name and then it will change the color of the main div
+
+![bgChanger project](image-4.png)
 
 `BgChanger.jsx`
 
 ```javascript
-function BgChanger() {
-  const [bgcolor, setBgcolor] = useState("olive");
-  return (
-    <div style={{ backgroundColor: bgcolor, width: "500px", height: "500px" }}>
-      <ColorTab setBgColor={setBgcolor} />
-    </div>
-  );
-}
-```
 
-`ColorTab.jsx`
+function ColorTab({ setBgColor }) {
+  const handleClick = (e) => setBgColor(e.target.innerText);
+  const colors = ["red", "green", "blue", "yellow", "olive"];
 
-```javascript
-function ColorTab({ setBgcolor }) {
-  const handleClick = (e) => setBgcolor(e.target.value);
-  const colors = ["red", "blue", "pink", "olive"];
   return (
     <div>
       {colors.map((color, idx) => (
-        <button
-          style={{ backgroundColor: color }}
-          key={idx}
-          onClick={handleClick}
-        >
+        <button key={idx} onClick={handleClick}>
           {color}
         </button>
       ))}
     </div>
   );
+}
+
+function BgColor() {
+  const [bgColor, setBgColor] = useState("olive");
+  return (
+    <div style={{ backgroundColor: bgColor }}>
+      <ColorTab setBgColor={setBgColor} />
+    </div>
+  );
+}
+```
+
+
+## day9
+
+### useEffect, useRef, and useCallback
+
+**Project**: a password generator which have options to increase length, add numbers, add special characters, and copy the generated password
+
+![password generator](image-2.png)
+
+1. useEffect: useEffect is a built-in hook in React that lets you synchronize your component with the rest of the app, by performing side effects such as data fetching, manipulating the DOM.
+
+syntax:
+
+```javascript
+import { useEffect } from 'react';
+
+function AnyComponentName() {
+  useEffect(() => {
+    // Code to run in response to state changes
+  }, [dependencies]);
+
+  return (
+    // JSX code
+  );
+}
+```
+
+2. useRef: useRef allows you to create a mutable reference to something. It is used to access or manipulate a DOM element, this passes the reference of the element
+
+syntax:
+
+```javascript
+import { useRef } from "react";
+
+function AnyComponentName() {
+  const myRef = useRef(initialValue);
+
+  // JSX code
+  return <div ref={myRef}>{/* JSX code */}</div>;
+}
+```
+
+3. useCallback: useCallback is used to optimize the function
+
+- optimize performance by preventing unnecessary re-renders of child components.
+- takes place with dependencies
+
+syntax:
+
+```javascript
+import { useCallback } from "react";
+
+function AnyComponentName() {
+  const handleClick = useCallback(() => {
+    // Code to run when the button is clicked
+  }, [dependencies]);
+
+  return <button onClick={handleClick}>Click me</button>;
 }
 ```
