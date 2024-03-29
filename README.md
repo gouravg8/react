@@ -234,43 +234,222 @@ In 2nd the change will happen based on it's previous value of the variable in th
 
 ## day8
 
-### BgProject
+### Project BgChanger
 
-**Problem statement**: create a webpage where there is a div containing the multiple colors name and when we click on any color button then the whole webpage is become the same color of the button
+This project is to test our knowledge of the useState() hook, list(key), event handlers, components etc.
 
-example: ![bgcolor project](image.png)
+Functionality:
+
+- there are many buttons on UI which will be length of `colors` array, it can be increase or decrease accordingly depending on the value of `colors` array
+- when we click on the button named colors name and then it will change the color of the main div
+
+![bgChanger project](image-4.png)
 
 `BgChanger.jsx`
 
 ```javascript
-function BgChanger() {
-  const [bgcolor, setBgcolor] = useState("olive");
-  return (
-    <div style={{ backgroundColor: bgcolor, width: "500px", height: "500px" }}>
-      <ColorTab setBgColor={setBgcolor} />
-    </div>
-  );
-}
-```
+function ColorTab({ setBgColor }) {
+  const handleClick = (e) => setBgColor(e.target.innerText);
+  const colors = ["red", "green", "blue", "yellow", "olive"];
 
-`ColorTab.jsx`
-
-```javascript
-function ColorTab({ setBgcolor }) {
-  const handleClick = (e) => setBgcolor(e.target.value);
-  const colors = ["red", "blue", "pink", "olive"];
   return (
     <div>
       {colors.map((color, idx) => (
-        <button
-          style={{ backgroundColor: color }}
-          key={idx}
-          onClick={handleClick}
-        >
+        <button key={idx} onClick={handleClick}>
           {color}
         </button>
       ))}
     </div>
   );
+}
+
+function BgColor() {
+  const [bgColor, setBgColor] = useState("olive");
+  return (
+    <div style={{ backgroundColor: bgColor }}>
+      <ColorTab setBgColor={setBgColor} />
+    </div>
+  );
+}
+```
+
+## day9
+
+### useEffect, useRef, and useCallback
+
+**Project**: a password generator which have options to increase length, add numbers, add special characters, and copy the generated password
+
+![password generator](image-2.png)
+
+1. useEffect: useEffect is a built-in hook in React that lets you synchronize your component with the rest of the app, by performing side effects such as data fetching, manipulating the DOM.
+
+syntax:
+
+```javascript
+import { useEffect } from 'react';
+
+function AnyComponentName() {
+  useEffect(() => {
+    // Code to run in response to state changes
+  }, [dependencies]);
+
+  return (
+    // JSX code
+  );
+}
+```
+
+2. useRef: useRef allows you to create a mutable reference to something. It is used to access or manipulate a DOM element, this passes the reference of the element
+
+syntax:
+
+```javascript
+import { useRef } from "react";
+
+function AnyComponentName() {
+  const myRef = useRef(initialValue);
+
+  // JSX code
+  return <div ref={myRef}>{/* JSX code */}</div>;
+}
+```
+
+3. useCallback: useCallback is used to optimize the function
+
+- optimize performance by preventing unnecessary re-renders of child components.
+- takes place with dependencies
+
+syntax:
+
+```javascript
+import { useCallback } from "react";
+
+function AnyComponentName() {
+  const handleClick = useCallback(() => {
+    // Code to run when the button is clicked
+  }, [dependencies]);
+
+  return <button onClick={handleClick}>Click me</button>;
+}
+```
+
+## day10
+
+### Currency converter
+
+This project converts one currency to another with realtime api, it contains almost all the currency types
+
+![currency converter](image.png)
+
+Rest code is presented at: `day1/01vite/src/components/CurrencyConvo`
+
+Custom hook: `useCurrencyInfo.js`
+
+```javascript
+import { useState, useEffect } from "react";
+
+function useCurrencyInfo(currency) {
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    fetch(`https://hosted-api.co/api/v1/${currency}.json`)
+      .then((response) => response.json())
+      .then((data) => setData(data[currency]));
+  }, [currency]);
+
+  return data;
+}
+
+export default useCurrencyInfo;
+```
+
+## day11
+
+### React Router
+
+```bash
+npm install react-router-dom
+```
+
+| Use this ✅         | Not this ❌        |
+| ------------------- | ------------------ |
+| `<Link to="/home">` | `<a href="/home">` |
+
+#### For navigation
+
+NavLink: `<NavLink to="/home">` for seeing is this tab is active or not
+
+```jsx
+<NavLink
+  to="/home"
+  className={({ isActive }) => (isActive ? "text-orange-500" : "text-gray-500")}
+>
+  Home
+</NavLink>
+```
+
+`src/Layout/` => `Header.jsx`, `Footer.jsx`, `Layout.jsx`
+
+`Layout.jsx`:
+
+```jsx
+import { Outlet } from "react-router-dom";
+import Footer from "./Footer";
+import Header from "./Header";
+
+function Layout() {
+  return (
+    <>
+      <Header />
+      <Outlet />
+      <Footer />
+    </>
+  );
+}
+
+export default Layout;
+```
+
+`main.jsx`:
+
+```javascript
+import {
+  Route,
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from "react-router-dom";
+
+// import below components
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Layout />}>
+      // here we will use loader
+      <Route path="" element={<Home />} loader={homeLoader} />
+      <Route path="passgen" element={<PassGen />} />
+      <Route path="bgchanger" element={<BgChanger />} />
+      <Route path="currencyconvo" element={<CurrencyConvo />} />
+    </Route>
+  )
+);
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);
+```
+
+`Loader`: loader in react-router-dom is used to prefetch the data, which means the data is fetched before the user visits the page, it fetched the data in the background when user hover over the link and react-router-dom understand that user is going to visit the link
+
+```javascript
+export const homeLoader = async () => {
+  let response = await fetch("https://api.github.com/users/gouravg8");
+  return response.json();
+};
+
+function Home() {
+  let data = useLoaderData();
+  return <div>{data.login}</div>; // example of loader use
 }
 ```
