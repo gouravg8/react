@@ -332,3 +332,124 @@ function AnyComponentName() {
   return <button onClick={handleClick}>Click me</button>;
 }
 ```
+
+## day10
+
+### Currency converter
+
+This project converts one currency to another with realtime api, it contains almost all the currency types
+
+![currency converter](image.png)
+
+Rest code is presented at: `day1/01vite/src/components/CurrencyConvo`
+
+Custom hook: `useCurrencyInfo.js`
+
+```javascript
+import { useState, useEffect } from "react";
+
+function useCurrencyInfo(currency) {
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    fetch(`https://hosted-api.co/api/v1/${currency}.json`)
+      .then((response) => response.json())
+      .then((data) => setData(data[currency]));
+  }, [currency]);
+
+  return data;
+}
+
+export default useCurrencyInfo;
+```
+
+## day11
+
+### React Router
+
+```bash
+npm install react-router-dom
+```
+
+| Use this ✅         | Not this ❌        |
+| ------------------- | ------------------ |
+| `<Link to="/home">` | `<a href="/home">` |
+
+#### For navigation
+
+NavLink: `<NavLink to="/home">` for seeing is this tab is active or not
+
+```jsx
+<NavLink
+  to="/home"
+  className={({ isActive }) => (isActive ? "text-orange-500" : "text-gray-500")}
+>
+  Home
+</NavLink>
+```
+
+`src/Layout/` => `Header.jsx`, `Footer.jsx`, `Layout.jsx`
+
+`Layout.jsx`:
+
+```jsx
+import { Outlet } from "react-router-dom";
+import Footer from "./Footer";
+import Header from "./Header";
+
+function Layout() {
+  return (
+    <>
+      <Header />
+      <Outlet />
+      <Footer />
+    </>
+  );
+}
+
+export default Layout;
+```
+
+`main.jsx`:
+
+```javascript
+import {
+  Route,
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from "react-router-dom";
+
+// import below components
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Layout />}>
+      // here we will use loader
+      <Route path="" element={<Home />} loader={homeLoader} />
+      <Route path="passgen" element={<PassGen />} />
+      <Route path="bgchanger" element={<BgChanger />} />
+      <Route path="currencyconvo" element={<CurrencyConvo />} />
+    </Route>
+  )
+);
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);
+```
+
+`Loader`: loader in react-router-dom is used to prefetch the data, which means the data is fetched before the user visits the page, it fetched the data in the background when user hover over the link and react-router-dom understand that user is going to visit the link
+
+```javascript
+export const homeLoader = async () => {
+  let response = await fetch("https://api.github.com/users/gouravg8");
+  return response.json();
+};
+
+function Home() {
+  let data = useLoaderData();
+  return <div>{data.login}</div>; // example of loader use
+}
+```
