@@ -234,6 +234,10 @@ In 2nd the change will happen based on it's previous value of the variable in th
 
 ## day8
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3de4503f849d99038733afa9512096d4be651a51
 ### Project BgChanger
 
 This project is to test our knowledge of the useState() hook, list(key), event handlers, components etc.
@@ -248,6 +252,10 @@ Functionality:
 `BgChanger.jsx`
 
 ```javascript
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3de4503f849d99038733afa9512096d4be651a51
 function ColorTab({ setBgColor }) {
   const handleClick = (e) => setBgColor(e.target.innerText);
   const colors = ["red", "green", "blue", "yellow", "olive"];
@@ -273,6 +281,10 @@ function BgColor() {
 }
 ```
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3de4503f849d99038733afa9512096d4be651a51
 ## day9
 
 ### useEffect, useRef, and useCallback
@@ -331,6 +343,7 @@ function AnyComponentName() {
 
   return <button onClick={handleClick}>Click me</button>;
 }
+<<<<<<< HEAD
 ```
 
 ## day10
@@ -453,3 +466,6 @@ function Home() {
   return <div>{data.login}</div>; // example of loader use
 }
 ```
+=======
+```
+>>>>>>> 3de4503f849d99038733afa9512096d4be651a51
