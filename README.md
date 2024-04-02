@@ -339,7 +339,7 @@ function AnyComponentName() {
 
 This project converts one currency to another with realtime api, it contains almost all the currency types
 
-![currency converter](image.png)
+![currency converter](currencyconvo.png)
 
 Rest code is presented at: `day1/01vite/src/components/CurrencyConvo`
 
