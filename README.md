@@ -2,6 +2,18 @@
 
 As an aspirational Full-Stack developer this(React) is one of the thing that will help me to make Web Apps to solve real-life problems.
 
+## How to use project?
+
+```bash
+git clone https://github.com/gouravg8/react.git #clone project
+
+cd react/day1/01vite #to enter on project folder
+
+npm install #to install all needed dependencies
+
+npm run dev #to start development server
+```
+
 ## Day1
 
 Setup the project
